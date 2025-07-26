@@ -1,0 +1,32 @@
+<!-- trade-entry.component.html -->
+<form (ngSubmit)="submit()" #tradeForm="ngForm" style="max-width: 400px;">
+
+  <label for="tradeId">Trade ID:</label><br/>
+  <input id="tradeId" name="tradeId" type="number" [(ngModel)]="trade.tradeId" required /><br/><br/>
+
+  <label for="version">Version:</label><br/>
+  <input id="version" name="version" type="number" [(ngModel)]="trade.version" required/><br/><br/>
+
+  <label for="securityCode">Security Code:</label><br/>
+  <input id="securityCode" name="securityCode" [(ngModel)]="trade.securityCode" required/><br/><br/>
+
+  <label for="quantity">Quantity:</label><br/>
+  <input id="quantity" name="quantity" type="number" [(ngModel)]="trade.quantity" required/><br/><br/>
+
+  <label for="action">Action:</label><br/>
+  <select id="action" name="action" [(ngModel)]="trade.action" required>
+    <option value="">--Select--</option>
+    <option *ngFor="let a of actions" [value]="a">{{a}}</option>
+  </select><br/><br/>
+
+  <label for="buySell">Buy/Sell:</label><br/>
+  <select id="buySell" name="buySell" [(ngModel)]="trade.buySell" required>
+    <option value="">--Select--</option>
+    <option *ngFor="let b of buysell" [value]="b">{{b}}</option>
+  </select><br/><br/>
+
+  <button type="submit" [disabled]="!tradeForm.form.valid">Submit</button>
+
+</form>
+
+<p *ngIf="message" style="color:green;">{{message}}</p>
